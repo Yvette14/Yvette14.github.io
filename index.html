@@ -2,162 +2,82 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Canvas</title>
+	<title>Yvette's Blog</title>
 	<style>
-		body,#canvas{
-			height: 100%;
+		*{
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+
+		body{
+			background:url(images/dog.jpg) 0 0 no-repeat;
+		}
+
+		.nav{
+			position: relative;
+			width: 600px;
+			height: 40px;
+			margin:20px;
+		}
+
+		ul li{
+			position: relative;
+			list-style: none;
+			display: inline-block;
+			padding-right:50px;
+			font-size: 20px;
+			line-height: 20px;
+		}
+		
+		ul li a:link,ul li a:visited{
+			display: block;
+			text-decoration: none;
+			color: #F0F8FF;
+			font-family: "Microsoft Yahei";
+			text-align: center;
+		}
+
+		ul li a:hover,ul li a:active{
+			display: block;
+			text-decoration: none;
+			color: #EEE8AA;
+			font-family: "Microsoft Yahei";
+			text-align: center;
+		}
+
+		#demo-list{
+			display: none;
+			position: absolute;
+		}
+
+		#demo-list li{
+			display: block;
+			padding-top: 20px;
+			text-align: center;
+			font-size: 16px;
+		}
+
+		#demo:hover #demo-list{
+			display: block;
 		}
 	</style>
+
 </head>
 <body>
-	<canvas id="canvas">
-	</canvas>
-	<a href="html/3d.html">3d模型</a>
-	
-	<script src="yvette14.github.io/countdown.js"></script>
-	<script src="yvette14.github.io/number.js"></script>
-	<!-- <script>
-		var ball = {x:512,y:100,r:20,g:2,vx:-4,vy:0,color:"#005588"};
-		window.onload = function () {
-			 var canvas = document.getElementById("canvas");
-
-			 canvas.width = 1024;
-			 canvas.height = 600;
-
-			 var context = canvas.getContext("2d");
-
-			 setInterval(function(){
-			 	render(context);
-			 	update();
-			 }
-			 ,
-			 50
-			 );
-
-			 function update () {
-			 	 ball.x += ball.vx;
-			 	 ball.y += ball.vy;
-			 	 ball.vy += ball.g; 
-
-			 	 if(ball.y >= 600-ball.r){
-			 	 	ball.y = 600-ball.r;
-			 	 	ball.vy = -ball.vy*0.5;
-			 	 }
-			 }
-
-			 function render (cxt) {
-			 	 cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
-
-			 	 cxt.fillStyle = ball.color;
-			 	 cxt.beginPath();
-			 	 cxt.arc(ball.x,ball.y,ball.r,0,2*Math.PI);
-			 	 cxt.closePath();
-
-			 	 cxt.fill(); 
-			 }
-		}
-	</script> -->
-	
-
-		<!-- //绘制圆
-		// window.onload = function () {
-		// 	 var canvas = document.getElementById("canvas");
-
-		// 	 canvas.width = 1024;
-		// 	 canvas.height = 768;
-
-		// 	 var context = canvas.getContext("2d");
-
-		// 	 context.lineWidth = 5;
-		// 	 context.strokeStyle = "#005588";
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 60, 40, 0, 2*Math.PI*(i+1)/10);
-		// 	 	context.closePath();
-
-		// 	 	context.stroke();
-		// 	 }
-
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 180, 40, 0, 2*Math.PI*(i+1)/10);
-
-		// 	 	context.stroke();
-		// 	 }
-
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 300, 40, 0, 2*Math.PI*(i+1)/10,true);
-		// 	 	context.closePath();
-
-		// 	 	context.stroke();
-		// 	 }
-
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 420, 40, 0, 2*Math.PI*(i+1)/10,true);
-
-		// 	 	context.stroke();
-		// 	 }
-
-		// 	 context.fillStyle = "#005588";
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 540, 40, 0, 2*Math.PI*(i+1)/10);
-		// 	 	context.closePath();
-
-		// 	 	context.fill();
-		// 	 }
-
-		// 	 for(var i = 0;i<10;i++){
-		// 	 	context.beginPath();
-		// 	 	context.arc(50 + i*100, 660, 40, 0, 2*Math.PI*(i+1)/10);
-
-		// 	 	context.fill();
-		// 	 }
-
-		// }
-
-		//七巧板
-		// var tangram = [
-		// 	{p:[{x:0,y:0},{x:400,y:0},{x:200,y:200}],color : "#caff67"},
-		// 	{p:[{x:0,y:0},{x:200,y:200},{x:0,y:400}],color : "#67befc"},
-		// 	{p:[{x:400,y:0},{x:400,y:200},{x:300,y:300},{x:300,y:100}],color : "#ef3d61"},
-		// 	{p:[{x:300,y:100},{x:300,y:300},{x:200,y:200}],color : "#f9f51a"},
-		// 	{p:[{x:200,y:200},{x:300,y:300},{x:200,y:400},{x:100,y:300}],color : "#a594c0"},
-		// 	{p:[{x:100,y:300},{x:200,y:400},{x:0,y:400}],color : "#fa8ecc"},
-		// 	{p:[{x:400,y:200},{x:400,y:400},{x:200,y:400}],color : "#f6ca29"}
-		// ]
-
-		// window.onload = function () {
-		// 	 var canvas = document.getElementById("canvas");
-
-		// 	 canvas.width = 400;
-		// 	 canvas.height = 400;
-
-		// 	 var context = canvas.getContext("2d");
-		// 	 for(var i = 0;i<tangram.length;i++){
-		// 	 	draw(tangram[i],context);
-		// 	 }
-			 	
-		// }
-
-		// function draw (piece,cxt) {
-		// 	 cxt.beginPath();
-		// 	 cxt.moveTo(piece.p[0].x, piece.p[0].y);
-		// 	 for(var i = 1;i<piece.p.length;i++){
-		// 	 	cxt.lineTo(piece.p[i].x,piece.p[i].y);
-		// 	 }  	
-		// 	 cxt.closePath();
-
-		// 	 cxt.fillStyle = piece.color;
-		// 	 cxt.fill();
-
-		// 	 cxt.strokeStyle = "black";
-		// 	 cxt.lineWidth = 3;
-		// 	 cxt.stroke();
-		// } -->
-	
-
+	<div class="nav">
+		<ul>
+			<li id="demo"><a href="" target="_blank">Demo</a>
+				<ul id="demo-list">
+					<li><a href="html/canvas.html">Canvas倒计时</a></li>
+					<li><a href="html/3d.html">Css3D翻板</a></li>
+					<li><a href="html/cube.html">Css3D立方体</a></li>
+				</ul>
+			</li>
+			<li><a href="https://github.com/Yvette14" target="_blank">GitHub</a></li>
+			<li><a href="https://twitter.com/@bing547080843ai" target="_blank">Twitter</a></li>
+			<li><a href="https://www.facebook.com/tanyibing1014" target="_blank">Facebook</a></li>
+		</ul>
+	</div>
 </body>
 </html>
