@@ -16,7 +16,7 @@ var wins = [];
 var myWin = [];
 var computerWin = [];
 
-
+//赢法数组是个三维数组
 for (var i = 0; i < 15; i++) {
 	wins[i] = [];
 	for (var j = 0; j < 15; j++) {
@@ -64,6 +64,8 @@ for (var i = 0; i < 11; i++) {
 		count++;
 	}
 }
+
+console.log(wins);
 
 for (var i = 0; i < count; i++) {
 	myWin[i] = 0;
