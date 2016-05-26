@@ -231,3 +231,8 @@ var computerAI = function() {
 			me = !me;
 		}
 }
+
+var replay = document.getElementById("replay");
+replay.onclick=function () {
+	location.href=document.referrer;
+}
