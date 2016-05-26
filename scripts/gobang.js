@@ -234,5 +234,5 @@ var computerAI = function() {
 
 var replay = document.getElementById("replay");
 replay.onclick=function () {
-	location.href=document.referrer;
+	location.href=location.href;
 }
